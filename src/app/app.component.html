@@ -1,0 +1,15 @@
+<main class="main">
+  <div class="content">
+      <h1>📚 Digital Library</h1>
+      <p>Welcome to your Digital Library! Please choose your login type below. 📖</p>
+    </div>
+    <button class="login-btn librarian-btn" (click)="loginAsLibrarian()">
+      <span class="btn-text">Login as Librarian</span>
+    </button>
+    <button class="login-btn user-btn" (click)="loginAsUser()">
+      <span class="btn-text">Login as User</span>
+    </button>
+</main>
+
+
+<router-outlet />
