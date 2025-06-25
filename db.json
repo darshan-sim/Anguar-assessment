@@ -11,6 +11,9 @@
       "username": "user1",
       "role": "user",
       "token": "mock-jwt-token-user"
+    },
+    {
+      "id": 3
     }
   ],
   "books": [
