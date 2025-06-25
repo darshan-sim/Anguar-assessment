@@ -10,12 +10,19 @@ export class BaseAPIService {
   constructor(private http: HttpClient) {}
 
   get<T>(path: string): Observable<T> {
-    console.log('get called');
     return this.http.get<T>(this._baseUrl + path);
   }
 
   post<T, U=T>(path: string):Observable<U>{
-    console.log('get called');
     return this.http.post<U>(this._baseUrl + path, {});
   }
+
+  put<T, U=T>(path: string, data: T):Observable<U>{
+    return this.http.put<U>(this._baseUrl + path, data);
+  }
+
+  delete<T>(path: string):Observable<void>{
+    return this.http.delete<void>(this._baseUrl + path, {});
+  }
+  
 }

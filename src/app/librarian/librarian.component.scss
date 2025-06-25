@@ -1,0 +1,16 @@
+.example-card {
+    max-width: 400px;
+    background-color: bisque;
+}
+
+.example-card-footer {
+    padding: 16px;
+}
+
+.book-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}

@@ -16,3 +16,16 @@ export interface LibrarianLogin {
   role: Role;
   token: string;
 }
+
+export interface BookDTO {
+  id: number;
+  title: string;
+  author: string;
+  available: boolean;
+}
+
+export interface BookUpdateDTO {
+  title: string;
+  author: string;
+  available: boolean;
+}
