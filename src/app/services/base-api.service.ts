@@ -13,8 +13,8 @@ export class BaseAPIService {
     return this.http.get<T>(this._baseUrl + path);
   }
 
-  post<T, U=T>(path: string):Observable<U>{
-    return this.http.post<U>(this._baseUrl + path, {});
+  post<T, U=T>(path: string, data: T):Observable<U>{
+    return this.http.post<U>(this._baseUrl + path, data);
   }
 
   put<T, U=T>(path: string, data: T):Observable<U>{

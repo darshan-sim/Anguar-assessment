@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',

@@ -17,13 +17,18 @@ export class BooksService {
     );
   }
 
-  deleteBook(id: number): void {
+  deleteBook(id: number): Observable<void> {
     const path = 'api/books/'+ id;
-    this.baseAPIService.delete(path)
+    return this.baseAPIService.delete(path)
   }
 
-  updateBook(id: number, book: BookUpdateDTO): void {
+  updateBook(id: number, book: BookUpdateDTO): Observable<BookDTO> {
     const path = 'api/books/'+ id;
-    this.baseAPIService.put(path, book)
+    return this.baseAPIService.put(path, book)
+  }
+
+  createBook(book: BookDTO): Observable<BookDTO> {
+    const path = 'api/books/';
+    return this.baseAPIService.post<BookDTO>(path, book)
   }
 }

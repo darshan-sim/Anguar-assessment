@@ -1,3 +1,8 @@
+<button mat-button (click)="onAddBook()">
+  <mat-icon>add</mat-icon>
+  Add Book
+</button>
+
 <div class="book-grid">
   @for(book of books | async; track book.id){
   <mat-card class="example-card" appearance="outlined">
@@ -9,21 +14,9 @@
       <p>{{ book.available }}</p>
     </mat-card-content>
     <mat-card-footer class="example-card-footer">
-      <button
-        matButton="filled"
-        (click)="
-          updateBook(book.id, {
-            title: book.title,
-            author: book.author,
-            available: book.available
-          })
-        "
-      >
-        Update
-      </button>
-      <button matButton="filled" (click)="deleteBook(book.id)">Delete</button>
+      <button mat-button (click)="onUpdateBook(book)">Update</button>
+      <button mat-button (click)="deleteBook(book.id)">Delete</button>
     </mat-card-footer>
   </mat-card>
-
   }
 </div>
