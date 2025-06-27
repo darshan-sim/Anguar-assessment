@@ -6,7 +6,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogActions,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioButton, MatRadioModule } from '@angular/material/radio';
@@ -25,10 +31,12 @@ import { BookDTO, BookUpdateDTO } from '../../dtos/index.dto';
   ],
   templateUrl: './book-create-dialog.component.html',
   styleUrl: './book-create-dialog.component.scss',
+  standalone: true,
 })
 export class BookCreateDialogComponent implements OnInit {
   data = inject(MAT_DIALOG_DATA);
   fb = inject(FormBuilder);
+  dialogRef = inject(MatDialogRef<BookCreateDialogComponent>);
   destroyRef = inject(DestroyRef);
   bookService = inject(BooksService);
   bookForm = this.fb.group({
@@ -47,7 +55,6 @@ export class BookCreateDialogComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.data.book);
     this.onReset();
   }
 
@@ -73,14 +80,20 @@ export class BookCreateDialogComponent implements OnInit {
       });
     }
   }
+
   onCreate(updateBook: BookDTO) {
     const subscription = this.bookService.createBook(updateBook).subscribe({
       next: (updatedBook) => {
         this.data.book = updatedBook;
       },
+      error: (error) => {
+        console.error('Error creating book:', error);
+      },
     });
-    this.destroyRef.onDestroy(subscription.unsubscribe);
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+    this.dialogRef.close();
   }
+
   onUpdate(updateBook: BookUpdateDTO) {
     const subscription = this.bookService
       .updateBook(this.data.book.id, updateBook)
@@ -88,8 +101,12 @@ export class BookCreateDialogComponent implements OnInit {
         next: (updatedBook) => {
           this.data.book = updatedBook;
         },
+        error: (error) => {
+          console.error('Error updating book:', error);
+        },
       });
-    this.destroyRef.onDestroy(subscription.unsubscribe);
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
+    this.dialogRef.close();
   }
 
   onReset() {

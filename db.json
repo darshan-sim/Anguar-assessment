@@ -18,22 +18,22 @@
   ],
   "books": [
     {
-      "title": "The Catcher in the Ryeeee",
-      "author": "J.D. Salinger",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salingerr",
       "available": false,
       "id": 5
     },
     {
-      "id": 6,
-      "title": "The Catcher in the Rye",
-      "author": "J.D. Salinger",
-      "available": false
+      "id": 1751024332064,
+      "title": "THE MONK WHO SOLD HIS FERRARI",
+      "author": "ROBIN SHARMA",
+      "available": true
     },
     {
-      "title": "Old title",
-      "author": "Old author",
+      "title": "PARADISE LOST",
+      "author": "MILTON, JOHN",
       "available": false,
-      "id": 1750933449628
+      "id": 1751024354013
     }
   ]
 }

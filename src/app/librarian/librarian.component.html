@@ -1,10 +1,16 @@
+<button mat-button (click)="onLogout()">
+  <mat-icon>logout</mat-icon>
+  Logout
+</button>
 <button mat-button (click)="onAddBook()">
   <mat-icon>add</mat-icon>
   Add Book
 </button>
 
+<app-book-filtration />
+
 <div class="book-grid">
-  @for(book of books | async; track book.id){
+  @for(book of books$ | async; track book.id){
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
       <mat-card-title>{{ book.title }}</mat-card-title>
@@ -20,3 +26,5 @@
   </mat-card>
   }
 </div>
+
+<!-- {"id":1,"username":"librarian1","role":"librarian","token":"mock-jwt-token-librarian"} -->
