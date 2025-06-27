@@ -1,0 +1,23 @@
+<div>
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput [formControl]="searchInput" />
+  </mat-form-field>
+  <form [formGroup]="filterForm">
+ <p>
+      <mat-slide-toggle formControlName="searchByTitle">
+        Search in Titles
+      </mat-slide-toggle>
+    </p>
+    <p>
+      <mat-slide-toggle formControlName="searchByAuthor">
+        Search in Authors
+      </mat-slide-toggle>
+    </p>
+    <p>
+      <mat-slide-toggle formControlName="filterUnavailable">
+        Hide Unavailable Books
+      </mat-slide-toggle>
+    </p>
+  </form>
+</div>
